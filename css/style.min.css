@@ -606,6 +606,9 @@ html.is-animating .transition-fade {
   font-weight: 700;
   margin-bottom: 1rem;
 }
+.prewiew{
+  margin-top: 2rem;
+}
 .prewiew__inner {
   margin: 1rem;
 }
