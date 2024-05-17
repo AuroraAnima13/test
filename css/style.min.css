@@ -437,6 +437,7 @@ html.is-animating .transition-fade {
   padding: 2rem 0;
 }
 .user__info-img {
+  object-fit: cover;
   width: 132px;
   height: 132px;
   border-radius: 50%;
