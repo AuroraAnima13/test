@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.min.css" />
     <script src="https://api-maps.yandex.ru/v3/?apikey=20fe8687-f2dd-4191-b3fa-1225b33dd08a&lang=ru_RU"></script>
-    <script src="https://unpkg.com/swup@4"></script>
     <title>Profile</title>
   </head>
   <body>
@@ -63,8 +62,8 @@
               src="images/avatar.avif"
               alt="user-photo"
             />
-            <a class="user__info-name d-block" href="#">Hanna Dorman</a>
-            <p class="user__info-prof">UX/UI designer</p>
+            <a class="user__info-name d-block" href="#">Bunin Dmitriy</a>
+            <p class="user__info-prof">Frontend Developer</p>
             <ul class="user__social d-flex justify-content-center">
               <li class="user__social-item">
                 <a class="user__social-link" href="#"
@@ -72,7 +71,7 @@
                 /></a>
               </li>
               <li class="user__social-item">
-                <a class="user__social-link" href="#"
+                <a class="user__social-link" target="_blank" href="https://t.me/dmitriy133553"
                   ><img src="images/tg.svg" alt="telegram"
                 /></a>
               </li>
@@ -149,15 +148,15 @@
           <ul class="nav__list col-md-5 col-xl-3 col-sm-6 d-flex">
             <li class="nav__item nav__item--active">
               
-              <a class="nav__link" href="index.html"><img src="images/activity.svg" alt="activity-icon" />Activity</a>
+              <a class="nav__link " href="index.html"><img src="images/activity.svg" alt="activity-icon" />Activity</a>
             </li>
             <li class="nav__item">
               
-              <a class="nav__link" href="map.html"><img src="images/map-icon.svg" alt="map-icon" />Map</a>
+              <a class="nav__link " href="map.html"><img src="images/map-icon.svg" alt="map-icon" />Map</a>
             </li>
             <li class="nav__item">
               
-              <a class="nav__link" href="timer.html"><img src="images/time-icon.svg" alt="time-icon" /> Time</a>
+              <a class="nav__link " href="timer.html"><img src="images/time-icon.svg" alt="time-icon" /> Time</a>
             </li>
           </ul>
           <ul class="nav__list col-md-5 col-xl-4 col-sm-6 justify-content-end d-flex">
@@ -183,10 +182,10 @@
       </div>
     </header>
 
-    <main class="main transition-fade" id="swup">
+    <main class="main transition-fade swup" >
       <div class="container">
         <div class="wrapper row d-flex justify-content-between">
-          <div class="blog col-xl-9 col-lg-9 col-md-12">
+          <div class="blog col-xl-9 col-lg-9 col-md-9">
             <div class="blog__item">
               <img class="blog__img" src="images/main-bg.avif" alt="bg" />
               <div class="blog__item-comment">
@@ -257,7 +256,7 @@
             </div>
           </div>
 
-          <aside class="sidebar col-xl-3 col-lg-9">
+          <aside class="sidebar col-xl-3 col-lg-3 col-md-3">
             <div class="user__info text-center">
               <img
                 class="user__info-img"
@@ -382,7 +381,7 @@
         </div>
       </div>
     </main>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/modules/bootstrap.bundle.min.js"></script>
     <script src="js/main.min.js"></script>
 
     <script></script>
