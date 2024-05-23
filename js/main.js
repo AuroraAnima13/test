@@ -28,7 +28,7 @@ function padZero(num) {
 async function initMapWithDelay() {
   await ymaps3.ready
 
-  setTimeout(function () {
+  
     const { YMap, YMapDefaultSchemeLayer } = ymaps3
 
     const map = new YMap(document.getElementById("map"), {
@@ -41,7 +41,7 @@ async function initMapWithDelay() {
     map.addChild(new YMapDefaultSchemeLayer())
     document.getElementById("loader").style.display = "none"
     document.getElementById("map").style.display = "block"
-  }, 2000) // Задержка в 2 cекунды
+  
 }
 function hideElement() {
   const hideButton = document.getElementById("close-btn")
