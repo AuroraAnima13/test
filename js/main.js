@@ -26,25 +26,31 @@ function padZero(num) {
   return (num < 10 ? "0" : "") + num
 }
 async function initMapWithDelay() {
-  // if (document.getElementById("map").children.length > 0) {
-  //   console.log("Карта уже существует.")
-  //   return // Выходим из функции, если карта уже есть
-  // }
+  const mapContainer = document.getElementById("map")
   await ymaps3.ready
 
-  const { YMap, YMapDefaultSchemeLayer } = ymaps3
+  setTimeout(function () {
+    // Очищаем контейнер карты
+    mapContainer.innerHTML = ""
 
-  const map = new YMap(document.getElementById("map"), {
-    location: {
-      center: [39.267048, 51.71401],
-      zoom: 16,
-    },
-  })
-  map.innerHTML = ""
-  map.addChild(new YMapDefaultSchemeLayer())
-  document.getElementById("loader").style.display = "none"
-  document.getElementById("map").style.display = "block"
-  // Задержка в 2 cекунды
+    const { YMap, YMapDefaultSchemeLayer } = ymaps3
+
+    const map = new YMap(mapContainer, {
+      location: {
+        center: [39.267048, 51.71401],
+        zoom: 16,
+      },
+    })
+
+    let loader = document.getElementById("loader")
+    map.addChild(new YMapDefaultSchemeLayer())
+    if (loader) {
+      loader.style.display = "none"
+    }
+    if (mapContainer) {
+      mapContainer.style.display = "block"
+    }
+  }, 1000) // Задержка в 1 cекунды
 }
 function hideElement() {
   const hideButton = document.getElementById("close-btn")
@@ -131,8 +137,8 @@ function swup() {
     }
   }
 
-  const loadPage = (href) => {
-    fetch(href)
+  const loadPage = (fileName) => {
+    fetch(fileName)
       .then((response) => response.text())
       .then((html) => {
         const parser = new DOMParser()
@@ -140,12 +146,8 @@ function swup() {
         const newContent = doc.querySelector(".swup").innerHTML
 
         swupDiv.innerHTML = newContent
-        document.title = doc.title
 
-        history.pushState({}, "", href)
-      })
-      .then(() => {
-        loadScripts(href)
+        loadScripts(fileName)
       })
   }
 
@@ -155,11 +157,6 @@ function swup() {
 
       let href = e.currentTarget.getAttribute("href")
       loadPage(href)
-    })
-
-    loadPage(window.location.pathname)
-    window.addEventListener("popstate", () => {
-      loadPage(window.location.pathname)
     })
   })
 }
