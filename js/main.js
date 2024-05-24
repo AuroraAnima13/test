@@ -108,18 +108,6 @@ function doActiveLink() {
   })
 }
 
-function showHideRightMenu() {
-  const btn = document.getElementById("rightMenu__close--btn")
-  const menu = document.querySelector(".rightMenu")
-  const btn2 = document.querySelector(".burger__menu-btn")
-  btn.addEventListener("click", function (event) {
-    menu.classList.remove("rightMenu--close")
-  })
-  btn2.addEventListener("click", function (event) {
-    menu.classList.add("rightMenu--close")
-  })
-}
-
 function swup() {
   const swupDiv = document.querySelector(".swup")
   const navLinks = document.querySelectorAll(".nav__link")
@@ -165,6 +153,5 @@ function swup() {
 document.addEventListener("DOMContentLoaded", () => {
   startTimer()
   doActiveLink()
-  showHideRightMenu()
   swup()
 })
