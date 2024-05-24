@@ -136,6 +136,10 @@ function swup() {
         swupDiv.innerHTML = newContent
 
         loadScripts(fileName)
+
+        // Обновляем URL с параметром
+        const newUrl = `${window.location.pathname}?content=${fileName}`
+        history.pushState(null, null, newUrl)
       })
   }
 
@@ -147,6 +151,25 @@ function swup() {
       loadPage(href)
     })
   })
+
+  // Обрабатываем переходы назад/вперед
+  window.addEventListener("popstate", () => {
+    const params = new URLSearchParams(window.location.search)
+    const content = params.get("content")
+    if (content) {
+      loadPage(content)
+    } else {
+      // Если параметр content отсутствует, загружаем начальную страницу
+      loadPage("index.html")
+    }
+  })
+
+  // При загрузке страницы проверяем параметр content
+  const initialParams = new URLSearchParams(window.location.search)
+  const initialContent = initialParams.get("content")
+  if (initialContent) {
+    loadPage(initialContent)
+  }
 }
 
 // =================== Обработчики =================
