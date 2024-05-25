@@ -92,25 +92,10 @@ function resetTimer() {
   })
 }
 
-function doActiveLink() {
-  // активная ссылка
-  const items = document.querySelectorAll(".nav__item")
-  const links = document.querySelectorAll(".nav__link")
-
-  links.forEach(function (link) {
-    link.addEventListener("click", function (event) {
-      items.forEach(function (item) {
-        item.classList.remove("nav__item--active")
-      })
-
-      link.parentNode.classList.add("nav__item--active")
-    })
-  })
-}
-
 function swup() {
   const swupDiv = document.querySelector(".swup")
   const navLinks = document.querySelectorAll(".nav__link")
+  const navItems = document.querySelectorAll(".nav__item")
 
   // =================== Обработчики =================
   const loadScripts = (href) => {
@@ -123,6 +108,18 @@ function swup() {
       resetTimer()
       hideElement()
     }
+  }
+
+  const setActiveLink = (fileName) => {
+    navItems.forEach((item) => {
+      item.classList.remove("nav__item--active")
+    })
+
+    navLinks.forEach((link) => {
+      if (link.getAttribute("href") === fileName) {
+        link.parentNode.classList.add("nav__item--active")
+      }
+    })
   }
 
   const loadPage = (fileName) => {
@@ -140,6 +137,9 @@ function swup() {
         // Обновляем URL с параметром
         const newUrl = `${window.location.pathname}?content=${fileName}`
         history.pushState(null, null, newUrl)
+
+        // Устанавливаем активный класс
+        setActiveLink(fileName)
       })
   }
 
@@ -168,8 +168,28 @@ function swup() {
   const initialParams = new URLSearchParams(window.location.search)
   const initialContent = initialParams.get("content")
   if (initialContent) {
+    setActiveLink(initialContent)
     loadPage(initialContent)
+  } else {
+    setActiveLink("index.html")
+    loadPage("activity.html")
   }
+}
+
+function doActiveLink() {
+  // активная ссылка
+  const items = document.querySelectorAll(".nav__item")
+  const links = document.querySelectorAll(".nav__link")
+
+  links.forEach(function (link) {
+    link.addEventListener("click", function () {
+      items.forEach(function (item) {
+        item.classList.remove("nav__item--active")
+      })
+
+      link.parentNode.classList.add("nav__item--active")
+    })
+  })
 }
 
 // =================== Обработчики =================
